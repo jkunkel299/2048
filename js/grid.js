@@ -1,7 +1,12 @@
 function Grid(size, previousState) {
   this.size = size;
   this.cells = previousState ? this.fromState(previousState) : this.empty();
+  console.log("Jess in Grid");
 }
+
+/* if (process.env.NODE_ENV === 'test') {
+  const Tile = require("./tile");//added for testing???
+} */
 
 // Build a grid of the specified size
 Grid.prototype.empty = function () {
@@ -14,7 +19,7 @@ Grid.prototype.empty = function () {
       row.push(null);
     }
   }
-
+  console.log("Jess in Grid.empty");
   return cells;
 };
 
@@ -29,22 +34,22 @@ Grid.prototype.fromState = function (state) {
       row.push(tile ? new Tile(tile.position, tile.value) : null);
     }
   }
-
+  console.log("Jess in Grid.fromState");
   return cells;
 };
 
 // Find the first available random position
 Grid.prototype.randomAvailableCell = function () {
   var cells = this.availableCells();
-
+  console.log("Jess in Grid.randomAvailableCell");
   if (cells.length) {
     return cells[Math.floor(Math.random() * cells.length)];
   }
 };
 
-Grid.prototype.availableCells = function () {
+Grid.prototype.availableCells = function () {// creates a new list of available cells on each function call
   var cells = [];
-
+  console.log("Jess in Grid.availableCells");
   this.eachCell(function (x, y, tile) {
     if (!tile) {
       cells.push({ x: x, y: y });
@@ -56,6 +61,7 @@ Grid.prototype.availableCells = function () {
 
 // Call callback for every cell
 Grid.prototype.eachCell = function (callback) {
+  console.log("Jess in Grid.eachCell");
   for (var x = 0; x < this.size; x++) {
     for (var y = 0; y < this.size; y++) {
       callback(x, y, this.cells[x][y]);
@@ -65,20 +71,26 @@ Grid.prototype.eachCell = function (callback) {
 
 // Check if there are any cells available
 Grid.prototype.cellsAvailable = function () {
+  console.log("Jess in Grid.cellsAvailable");
   return !!this.availableCells().length;
 };
 
 // Check if the specified cell is taken
 Grid.prototype.cellAvailable = function (cell) {
+  console.log("Jess in Grid.cellAvailable");
   return !this.cellOccupied(cell);
 };
 
 Grid.prototype.cellOccupied = function (cell) {
+  console.log("Jess in Grid.cellOccupied");
   return !!this.cellContent(cell);
 };
 
 Grid.prototype.cellContent = function (cell) {
+  console.log("Jess in Grid.cellContent");
   if (this.withinBounds(cell)) {
+    console.log("this.cells[cell.x][cell.y]");
+    console.log(this.cells[cell.x][cell.y]);
     return this.cells[cell.x][cell.y];
   } else {
     return null;
@@ -87,21 +99,24 @@ Grid.prototype.cellContent = function (cell) {
 
 // Inserts a tile at its position
 Grid.prototype.insertTile = function (tile) {
+  console.log("Jess in Grid.insertTile");
   this.cells[tile.x][tile.y] = tile;
 };
 
 Grid.prototype.removeTile = function (tile) {
+  console.log("Jess in Grid.removeTile");
   this.cells[tile.x][tile.y] = null;
 };
 
 Grid.prototype.withinBounds = function (position) {
+  console.log("Jess in Grid.withinBounds");
   return position.x >= 0 && position.x < this.size &&
          position.y >= 0 && position.y < this.size;
 };
 
 Grid.prototype.serialize = function () {
   var cellState = [];
-
+  console.log("Jess in Grid.serialize");
   for (var x = 0; x < this.size; x++) {
     var row = cellState[x] = [];
 
@@ -115,3 +130,7 @@ Grid.prototype.serialize = function () {
     cells: cellState
   };
 };
+module.exports = Grid;
+/* if (process.env.NODE_ENV === 'test') {
+  module.exports = Grid;
+} */

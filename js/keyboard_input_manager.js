@@ -1,6 +1,6 @@
 function KeyboardInputManager() {
   this.events = {};
-
+  console.log("Jess in KeyboardInputManager");
   if (window.navigator.msPointerEnabled) {
     //Internet Explorer 10 style
     this.eventTouchstart    = "MSPointerDown";
@@ -16,6 +16,7 @@ function KeyboardInputManager() {
 }
 
 KeyboardInputManager.prototype.on = function (event, callback) {
+  console.log("Jess in KeyboardInputManager.on");
   if (!this.events[event]) {
     this.events[event] = [];
   }
@@ -23,6 +24,7 @@ KeyboardInputManager.prototype.on = function (event, callback) {
 };
 
 KeyboardInputManager.prototype.emit = function (event, data) {
+  console.log("Jess in KeyboardInputManager.emit");
   var callbacks = this.events[event];
   if (callbacks) {
     callbacks.forEach(function (callback) {
@@ -32,6 +34,7 @@ KeyboardInputManager.prototype.emit = function (event, data) {
 };
 
 KeyboardInputManager.prototype.listen = function () {
+  console.log("Jess in KeyboardInputManager.listen");
   var self = this;
 
   var map = {
@@ -128,17 +131,24 @@ KeyboardInputManager.prototype.listen = function () {
 };
 
 KeyboardInputManager.prototype.restart = function (event) {
+  console.log("Jess in KeyboardInputManager.restart");
   event.preventDefault();
   this.emit("restart");
 };
 
 KeyboardInputManager.prototype.keepPlaying = function (event) {
+  console.log("Jess in KeyboardInputManager.keepPlaying");
   event.preventDefault();
   this.emit("keepPlaying");
 };
 
 KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
+  console.log("Jess in KeyboardInputManager.bindButtonPress");
   var button = document.querySelector(selector);
   button.addEventListener("click", fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));
 };
+
+/* if (process.env.NODE_ENV === 'test') {
+  module.exports = KeyboardInputManager;
+} */
