@@ -1,6 +1,8 @@
 {
   "devDependencies": {
-    "mocha": "^10.8.2"
+    "chai": "^3.5.0",
+    "mocha": "^10.8.2",
+    "sinon": "^19.0.2"
   },
   "scripts": {
     "test": "mocha"

@@ -24,12 +24,9 @@ function LocalStorageManager() {
 
   var supported = this.localStorageSupported();
   this.storage = supported ? window.localStorage : window.fakeStorage;
-  console.log("Jess in LocalStorageManager");
-  console.log(window.localStorage);
 }
 
 LocalStorageManager.prototype.localStorageSupported = function () {
-  console.log("Jess in LocalStorageManager.localStorageSupported");
   var testKey = "test";
 
   try {
@@ -44,33 +41,25 @@ LocalStorageManager.prototype.localStorageSupported = function () {
 
 // Best score getters/setters
 LocalStorageManager.prototype.getBestScore = function () {
-  console.log("Jess in LocalStorageManager.getBestScore");
   return this.storage.getItem(this.bestScoreKey) || 0;
 };
 
 LocalStorageManager.prototype.setBestScore = function (score) {
-  console.log("Jess in LocalStorageManager.setBestScore");
   this.storage.setItem(this.bestScoreKey, score);
 };
 
 // Game state getters/setters and clearing
 LocalStorageManager.prototype.getGameState = function () {
-  console.log("Jess in LocalStorageManager.getGameState");
   var stateJSON = this.storage.getItem(this.gameStateKey);
-  console.log(stateJSON);
   return stateJSON ? JSON.parse(stateJSON) : null;
 };
 
 LocalStorageManager.prototype.setGameState = function (gameState) {
-  console.log("Jess in LocalStorageManager.setGameState");
   this.storage.setItem(this.gameStateKey, JSON.stringify(gameState));
 };
 
 LocalStorageManager.prototype.clearGameState = function () {
-  console.log("Jess in LocalStorageManager.clearGameState");
   this.storage.removeItem(this.gameStateKey);
 };
 
-/* if (process.env.NODE_ENV === 'test') {
-  module.exports = LocalStorageManager;
-} */
+module.exports = LocalStorageManager;

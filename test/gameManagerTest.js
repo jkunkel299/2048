@@ -4,12 +4,12 @@ function gameManagerTest () {
     const GameManager = require("../js/game_manager");
     const Tile = require("../js/tile");
     const Grid = require("../js/grid");
-    const HTMLActuator = require("../js/html_actuator");
-    const KeyboardInputManager = require("../js/keyboard_input_manager");
-    //const LocalStorageManager = require("../js/local_storage_manager");
 
     const size = 4
-    const cells = [[null,null,{"position":{"x":0,"y":2},"value":4},{"position":{"x":0,"y":3},"value":8}],[null,null,null,{"position":{"x":1,"y":3},"value":2}],[null,null,null,{"position":{"x":2,"y":3},"value":2}],[null,null,null,null]]    
+    const cells =   [[null,null,{"position":{"x":0,"y":2},"value":4},{"position":{"x":0,"y":3},"value":8}],
+                    [null,null,null,{"position":{"x":1,"y":3},"value":2}],
+                    [null,null,null,{"position":{"x":2,"y":3},"value":2}],
+                    [null,null,null,null]]    
     
     const gridInst = Object.create(Grid.prototype);
     gridInst.size = size;
@@ -18,8 +18,6 @@ function gameManagerTest () {
     const gameManagerInstance = Object.create(GameManager.prototype);
     gameManagerInstance.size = size;
     gameManagerInstance.grid = gridInst;
-    // console.log("gameManagerInstance.grid")
-    // console.log(gameManagerInstance.grid);
 
     const cell_0_0 = {x: 0, y: 0};
     const cell_0_1 = {x: 0, y: 1};
@@ -310,8 +308,6 @@ function gameManagerTest () {
         it("test case 7 - find farthest position - (1, 1), right", function (){
             const farthest_7 = gameManagerInstance.findFarthestPosition(cell_1_1, vectorRight);
             const far_out_7 = { farthest: { x: 1, y: 1 }, next: { x: 2, y: 1 } };
-            //console.log("testing farthest position");
-            //console.log(farthest_7);
             assert.deepEqual(farthest_7, far_out_7);
         });
 
@@ -377,7 +373,127 @@ function gameManagerTest () {
     });
 
     describe('Tests for GameManager.positionsEqual()', () => {
+        var tilePlain = new Tile({x: 0, y: 0}, 2);
+        var testBool;
 
+        it("test case 1 - positions equal - first: (1, 0), second: (3, 0)", () => {
+            tilePlain.x = 3;
+            tilePlain.y = 0;
+            testBool = gameManagerInstance.positionsEqual(cell_1_0, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 2 - positions equal - first: (0, 1), second: (2, 1)", () => {
+            tilePlain.x = 2;
+            tilePlain.y = 1;
+            testBool = gameManagerInstance.positionsEqual(cell_0_1, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 3 - positions equal - first: (3, 2), second: (0, 2)", () => {
+            tilePlain.x = 0;
+            tilePlain.y = 2;
+            testBool = gameManagerInstance.positionsEqual(cell_3_2, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 4 - positions equal - first: (1, 1), second: (0, 1)", () => {
+            tilePlain.x = 0;
+            tilePlain.y = 1;
+            testBool = gameManagerInstance.positionsEqual(cell_1_1, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 5 - positions equal - first: (1, 2), second: (2, 2)", () => {
+            tilePlain.x = 2;
+            tilePlain.y = 2;
+            testBool = gameManagerInstance.positionsEqual(cell_1_2, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 6 - positions equal - first: (3, 3), second: (3, 3)", () => {
+            tilePlain.x = 3;
+            tilePlain.y = 3;
+            testBool = gameManagerInstance.positionsEqual(cell_3_3, tilePlain);
+            assert.equal(testBool, true);
+        });
+
+        it("test case 7 - positions equal - first: (0, 2), second: (1, 2)", () => {
+            tilePlain.x = 1;
+            tilePlain.y = 2;
+            testBool = gameManagerInstance.positionsEqual(cell_0_2, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 8 - positions equal - first: (3, 0), second: (2, 0)", () => {
+            tilePlain.x = 2;
+            tilePlain.y = 0;
+            testBool = gameManagerInstance.positionsEqual(cell_3_0, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 9 - positions equal - first: (0, 1), second: (3, 1)", () => {
+            tilePlain.x = 3;
+            tilePlain.y = 1;
+            testBool = gameManagerInstance.positionsEqual(cell_0_1, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 10 - positions equal - first: (0, 3), second: (0, 3)", () => {
+            tilePlain.x = 0;
+            tilePlain.y = 3;
+            testBool = gameManagerInstance.positionsEqual(cell_0_3, tilePlain);
+            assert.equal(testBool, true);
+        });
+
+        it("test case 11 - positions equal - first: (1, 3), second: (1, 3)", () => {
+            tilePlain.x = 1;
+            tilePlain.y = 3;
+            testBool = gameManagerInstance.positionsEqual(cell_1_3, tilePlain);
+            assert.equal(testBool, true);
+        });
+
+        it("test case 12 - positions equal - first: (2, 2), second: (3, 2)", () => {
+            tilePlain.x = 3;
+            tilePlain.y = 2;
+            testBool = gameManagerInstance.positionsEqual(cell_2_2, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 13 - positions equal - first: (3, 1), second: (1, 1)", () => {
+            tilePlain.x = 1;
+            tilePlain.y = 1;
+            testBool = gameManagerInstance.positionsEqual(cell_0_1, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 14 - positions equal - first: (0, 0), second: (0, 0)", () => {
+            tilePlain.x = 0;
+            tilePlain.y = 0;
+            testBool = gameManagerInstance.positionsEqual(cell_0_0, tilePlain);
+            assert.equal(testBool, true);
+        });
+
+        it("test case 15 - positions equal - first: (2, 3), second: (2, 3)", () => {
+            tilePlain.x = 2;
+            tilePlain.y = 3;
+            testBool = gameManagerInstance.positionsEqual(cell_2_3, tilePlain);
+            assert.equal(testBool, true);
+        });
+
+        it("test case 16 - positions equal - first: (2, 0), second: (1, 0)", () => {
+            tilePlain.x = 1;
+            tilePlain.y = 0;
+            testBool = gameManagerInstance.positionsEqual(cell_2_0, tilePlain);
+            assert.equal(testBool, false);
+        });
+
+        it("test case 17 - positions equal - first: (2, 1), second: (0, 1)", () => {
+            tilePlain.x = 0;
+            tilePlain.y = 1;
+            testBool = gameManagerInstance.positionsEqual(cell_2_1, tilePlain);
+            assert.equal(testBool, false);
+        });
     });
 }
 

@@ -4,7 +4,10 @@ function gridTest (){
     const Grid = require("../js/grid");
 
     const size = 4
-    const cells = [[null,null,{"position":{"x":0,"y":2},"value":4},{"position":{"x":0,"y":3},"value":8}],[null,null,null,{"position":{"x":1,"y":3},"value":2}],[null,null,null,{"position":{"x":2,"y":3},"value":2}],[null,null,null,null]]    
+    const cells =   [[null,null,{"position":{"x":0,"y":2},"value":4},{"position":{"x":0,"y":3},"value":8}],
+                    [null,null,null,{"position":{"x":1,"y":3},"value":2}],
+                    [null,null,null,{"position":{"x":2,"y":3},"value":2}],
+                    [null,null,null,null]]    
         
     const gridInst = Object.create(Grid.prototype);
     gridInst.size = size;
