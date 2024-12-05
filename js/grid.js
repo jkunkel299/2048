@@ -73,7 +73,6 @@ Grid.prototype.cellOccupied = function (cell) {
 };
 
 Grid.prototype.cellContent = function (cell) {
-  console.log("Jess in Grid.cellContent");
   if (this.withinBounds(cell)) {
     return this.cells[cell.x][cell.y];
   } else {

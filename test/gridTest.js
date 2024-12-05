@@ -2,6 +2,7 @@ function gridTest (){
     const assert = require('assert');
 
     const Grid = require("../js/grid");
+    const Tile = require("../js/tile");
 
     const size = 4
     const cells =   [[null,null,{"position":{"x":0,"y":2},"value":4},{"position":{"x":0,"y":3},"value":8}],
@@ -94,6 +95,88 @@ function gridTest (){
         it("Grid.cellContent - test case 16 - (3 , 3)", function (){
             assert.deepEqual(gridInst.cellContent(cell_test_16),null);
         });
+    });
+
+    describe('Tests for Grid.insertTile()', () => {
+        // const size = 4
+        // const cells = [[null,null,{"position":{"x":0,"y":2},"value":4},{"position":{"x":0,"y":3},"value":8}],[null,null,null,{"position":{"x":1,"y":3},"value":2}],[null,null,null,{"position":{"x":2,"y":3},"value":2}],[null,null,null,null]]
+        
+        // const gridInst = Object.create(Grid.prototype);
+        // gridInst.size = size;
+        // gridInst.cells = cells;
+
+        const position_1 = { "x": 0, "y": 0 };
+        const value_1 = 2;
+        const position_2 = { "x": 1, "y": 1 };
+        const value_2 = 4;
+        const position_3 = { "x": 2, "y": 2 };
+        const value_3 = 8;
+        const position_4 = { "x": 3, "y": 3 };
+        const value_4 = 16;
+
+        const tile_test_1 = new Tile(position_1, value_1);
+        const tile_test_2 = new Tile(position_2, value_2);
+        const tile_test_3 = new Tile(position_3, value_3);
+        const tile_test_4 = new Tile(position_4, value_4);
+
+        it("Grid.insertTile - test case 1 - (0,0) ", function () {
+            gridInst.insertTile(tile_test_1);
+            assert.equal(tile_test_1, gridInst.cells[position_1.x][position_1.y], "deeply equal");
+        });
+        it("Grid.insertTile - test case 2 - (1,1) ", function () {
+            gridInst.insertTile(tile_test_2);
+            assert.equal(tile_test_2, gridInst.cells[position_2.x][position_2.y], "deeply equal");
+        });
+        it("Grid.insertTile - test case 3 - (2,2) ", function () {
+            gridInst.insertTile(tile_test_3);
+            assert.equal(tile_test_3, gridInst.cells[position_3.x][position_3.y], "deeply equal");
+        });
+        it("Grid.insertTile - test case 4 - (3,3) ", function () {
+            gridInst.insertTile(tile_test_4);
+            assert.equal(tile_test_4, gridInst.cells[position_4.x][position_4.y], "deeply equal");
+        });
+
+    });
+
+    describe('Tests for Grid.removeTile()', () => {
+        // const size = 4
+        // const cells = [[null, null, { "position": { "x": 0, "y": 2 }, "value": 4 }, { "position": { "x": 0, "y": 3 }, "value": 8 }], [null, null, null, { "position": { "x": 1, "y": 3 }, "value": 2 }], [null, null, null, { "position": { "x": 2, "y": 3 }, "value": 2 }], [null, null, null, null]]
+
+        // const gridInst = Object.create(Grid.prototype);
+        // gridInst.size = size;
+        // gridInst.cells = cells;
+
+        const position_1 = { "x": 0, "y": 2 };
+        const value_1 = 0;
+        const position_2 = { "x": 0, "y": 3 };
+        const value_2 = 0;
+        const position_3 = { "x": 1, "y": 3 };
+        const value_3 = 0;
+        const position_4 = { "x": 2, "y": 3 };
+        const value_4 = 0;
+
+        const tile_test_1 = new Tile(position_1, value_1);
+        const tile_test_2 = new Tile(position_2, value_2);
+        const tile_test_3 = new Tile(position_3, value_3);
+        const tile_test_4 = new Tile(position_4, value_4);
+
+        it("Grid.removeTile - test case 1 - (0,2) ", function () {
+            gridInst.removeTile(tile_test_1);
+            assert.equal(gridInst.cells[position_1.x][position_1.y], null, "deeply equal");
+        });
+        it("Grid.removeTile - test case 2 - (0,3) ", function () {
+            gridInst.removeTile(tile_test_2);
+            assert.equal(gridInst.cells[position_2.x][position_2.y], null, "deeply equal");
+        });
+        it("Grid.removeTile - test case 3 - (1,3) ", function () {
+            gridInst.removeTile(tile_test_3);
+            assert.equal(gridInst.cells[position_3.x][position_3.y], null, "deeply equal");
+        });
+        it("Grid.removeTile - test case 4 - (2,3) ", function () {
+            gridInst.removeTile(tile_test_4);
+            assert.equal(gridInst.cells[position_4.x][position_4.y], null, "deeply equal");
+        });
+
     });
 }
 

@@ -85,7 +85,6 @@ HTMLActuator.prototype.addTile = function (tile) {
 
   // Put the tile on the board
   this.tileContainer.appendChild(wrapper);
-  console.log(tile.value);
 };
 
 HTMLActuator.prototype.applyClasses = function (element, classes) {
@@ -93,8 +92,6 @@ HTMLActuator.prototype.applyClasses = function (element, classes) {
 };
 
 HTMLActuator.prototype.normalizePosition = function (position) {
-  console.log(position);
-  console.log({ x: position.x + 1, y: position.y + 1 });
   return { x: position.x + 1, y: position.y + 1 };
 };
 

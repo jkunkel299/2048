@@ -130,7 +130,6 @@ GameManager.prototype.moveTile = function (tile, cell) {
 GameManager.prototype.move = function (direction) {
   // 0: up, 1: right, 2: down, 3: left
   var self = this;
-  console.log('DIRECTION',direction);
   if (this.isGameTerminated()) return; // Don't do anything if the game's over
   var cell, tile;
 
@@ -164,7 +163,6 @@ GameManager.prototype.move = function (direction) {
 
           // The mighty 2048 tile
           if (merged.value === 2048) self.won = true;
-          console.log("end of merging");
         } else {
           self.moveTile(tile, positions.farthest);//moves a tile without merging
         }
@@ -263,7 +261,6 @@ GameManager.prototype.tileMatchesAvailable = function () {
 };
 
 GameManager.prototype.positionsEqual = function (first, second) {
-  console.log(first.x === second.x && first.y === second.y);
   return first.x === second.x && first.y === second.y;
 };
 

@@ -1384,10 +1384,8 @@ function moveTest () {
           
         it('should test merging and moving tiles', () => {
             expect(gameManagerInstance3.grid).to.deep.equal(gridInstTests3);
-            //console.log('CALLCOUNT',MockTile.callCount)
         
             gameManagerInstance3.move(3);
-            // console.log('CALLCOUNT',MockTile.callCount)
             expect(JSON.stringify(gameManagerInstance3.grid.cells)).to.equal(JSON.stringify(cellsFinal3TileArray))
 
             expect(actuateSpy.callCount).to.equal(1);
@@ -1820,10 +1818,8 @@ function moveTest () {
         
         it('should test merging and moving tiles', () => {
             expect(gameManagerInstance4.grid).to.deep.equal(gridInstTests4);
-            //console.log('CALLCOUNT',MockTile.callCount)
         
             gameManagerInstance4.move(0);
-            // console.log('CALLCOUNT',MockTile.callCount)
             expect(JSON.stringify(gameManagerInstance4.grid.cells)).to.equal(JSON.stringify(cellsFinal4TileArray))
 
             expect(actuateSpy.callCount).to.equal(1);

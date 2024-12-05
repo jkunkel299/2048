@@ -282,8 +282,6 @@ function gameManagerTest () {
         it("test case 3 - find farthest position - (2, 3), up", function (){
             const farthest_3 = gameManagerInstance.findFarthestPosition(cell_2_3, vectorUp);
             const far_out_3 = { farthest: { x: 2, y: 3 }, next: { x: 2, y: 2 } };
-            console.log("testing farthest position");
-            console.log(farthest_3);
             assert.deepEqual(farthest_3, far_out_3);
         });
 

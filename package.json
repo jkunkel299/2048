@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "chai": "^3.5.0",
+    "jsdom-global": "^3.0.2",
     "mocha": "^10.8.2",
     "sinon": "^19.0.2"
   },
