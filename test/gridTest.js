@@ -8,176 +8,308 @@ function gridTest (){
     const cells =   [[null,null,{"position":{"x":0,"y":2},"value":4},{"position":{"x":0,"y":3},"value":8}],
                     [null,null,null,{"position":{"x":1,"y":3},"value":2}],
                     [null,null,null,{"position":{"x":2,"y":3},"value":2}],
-                    [null,null,null,null]]    
+                    [null,null,null,null]] 
+                    
+    const emptyCells = [[null,null,null,null],
+                        [null,null,null,null],
+                        [null,null,null,null],
+                        [null,null,null,null]]
+
+    const fullCells =   [[{"position":{"x":0,"y":0},"value":2},{"position":{"x":0,"y":1},"value":4},{"position":{"x":0,"y":2},"value":8},{"position":{"x":0,"y":3},"value":16}],
+                        [{"position":{"x":1,"y":0},"value":16},{"position":{"x":1,"y":1},"value":2},{"position":{"x":1,"y":2},"value":4},{"position":{"x":1,"y":3},"value":8}],
+                        [{"position":{"x":2,"y":0},"value":8},{"position":{"x":2,"y":1},"value":16},{"position":{"x":2,"y":2},"value":2},{"position":{"x":2,"y":3},"value":4}],
+                        [{"position":{"x":3,"y":0},"value":4},{"position":{"x":3,"y":1},"value":8},{"position":{"x":3,"y":2},"value":16},{"position":{"x":3,"y":3},"value":2}]]
         
     const gridInst = Object.create(Grid.prototype);
     gridInst.size = size;
     gridInst.cells = cells;
 
-    describe('Tests for Grid.cellContent()', () => {
-        const cell_test_1 = {x:0, y:0} //null
-        const cell_test_2 = {x:0, y:1} //null
-        const cell_test_3 = {x:0, y:2} //4
-        const cell_test_4 = {x:0, y:3} //8
-        const cell_test_5 = {x:1, y:0} //null
-        const cell_test_6 = {x:1, y:1} //null
-        const cell_test_7 = {x:1, y:2} //null
-        const cell_test_8 = {x:1, y:3} //2
-        const cell_test_9 = {x:2, y:0} //null
-        const cell_test_10 = {x:2, y:1} //null
-        const cell_test_11 = {x:2, y:2} //null
-        const cell_test_12 = {x:2, y:3} //2
-        const cell_test_13 = {x:3, y:0} //null
-        const cell_test_14 = {x:3, y:1} //null
-        const cell_test_15 = {x:3, y:2} //null
-        const cell_test_16 = {x:3, y:3} //null
-        
+    const cell_0_0 = {x: 0, y: 0};
+    const cell_0_1 = {x: 0, y: 1};
+    const cell_0_2 = {x: 0, y: 2};
+    const cell_0_3 = {x: 0, y: 3};
+    const cell_1_0 = {x: 1, y: 0};
+    const cell_1_1 = {x: 1, y: 1};
+    const cell_1_2 = {x: 1, y: 2};
+    const cell_1_3 = {x: 1, y: 3};
+    const cell_2_0 = {x: 2, y: 0};
+    const cell_2_1 = {x: 2, y: 1};
+    const cell_2_2 = {x: 2, y: 2};
+    const cell_2_3 = {x: 2, y: 3};
+    const cell_3_0 = {x: 3, y: 0};
+    const cell_3_1 = {x: 3, y: 1};
+    const cell_3_2 = {x: 3, y: 2};
+    const cell_3_3 = {x: 3, y: 3};
+
+    // tile declarations for Grid.insertTile() and Grid.removeTile() tests
+    const tile_test_1 = new Tile(cell_0_0, 2);
+    const tile_test_2 = new Tile(cell_0_1, 4);
+    const tile_test_3 = new Tile(cell_0_1, 8);
+    const tile_test_4 = new Tile(cell_0_2, 8);
+    const tile_test_5 = new Tile(cell_0_3, 16);
+    const tile_test_6 = new Tile(cell_1_0, 16);
+    const tile_test_7 = new Tile(cell_1_1, 2);
+    const tile_test_8 = new Tile(cell_1_2, 8);
+    const tile_test_9 = new Tile(cell_1_3, 16);
+    const tile_test_10 = new Tile(cell_2_0, 2);
+    const tile_test_11 = new Tile(cell_2_1, 4);
+    const tile_test_12 = new Tile(cell_2_2, 2);
+    const tile_test_13 = new Tile(cell_2_3, 16);
+    const tile_test_14 = new Tile(cell_3_0, 16);
+    const tile_test_15 = new Tile(cell_3_1, 2);
+    const tile_test_16 = new Tile(cell_3_2, 8);
+    const tile_test_17 = new Tile(cell_3_3, 2);
+
+    describe('Tests for Grid.cellContent()', () => {        
         it("Grid.cellContent - test case 1 - (0 , 0)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_1),null);
+            assert.deepEqual(gridInst.cellContent(cell_0_0),null);
         });
 
         it("Grid.cellContent - test case 2 - (0 , 1)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_2),null);
+            assert.deepEqual(gridInst.cellContent(cell_0_1),null);
         });
 
         it("Grid.cellContent - test case 3 - (0 , 2)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_3),{ position: { x: 0, y: 2 }, value: 4 });
+            assert.deepEqual(gridInst.cellContent(cell_0_2),{ position: { x: 0, y: 2 }, value: 4 });
         });
 
         it("Grid.cellContent - test case 4 - (0 , 3)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_4),{ position: { x: 0, y: 3 }, value: 8 });
+            assert.deepEqual(gridInst.cellContent(cell_0_3),{ position: { x: 0, y: 3 }, value: 8 });
         });
 
         it("Grid.cellContent - test case 5 - (1 , 0)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_5),null);
+            assert.deepEqual(gridInst.cellContent(cell_1_0),null);
         });
 
         it("Grid.cellContent - test case 6 - (1 , 1)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_6),null);
+            assert.deepEqual(gridInst.cellContent(cell_1_1),null);
         });
 
         it("Grid.cellContent - test case 7 - (1 , 2)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_7),null);
+            assert.deepEqual(gridInst.cellContent(cell_1_2),null);
         });
 
         it("Grid.cellContent - test case 8 - (1 , 3)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_8),{ position: { x: 1, y: 3 }, value: 2 });
+            assert.deepEqual(gridInst.cellContent(cell_1_3),{ position: { x: 1, y: 3 }, value: 2 });
         });
 
         it("Grid.cellContent - test case 9 - (2 , 0)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_9),null);
+            assert.deepEqual(gridInst.cellContent(cell_2_0),null);
         });
 
         it("Grid.cellContent - test case 10 - (2 , 1)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_10),null);
+            assert.deepEqual(gridInst.cellContent(cell_2_1),null);
         });
 
         it("Grid.cellContent - test case 11 - (2 , 2)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_11),null);
+            assert.deepEqual(gridInst.cellContent(cell_2_2),null);
         });
 
         it("Grid.cellContent - test case 12 - (2 , 3)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_12),{ position: { x: 2, y: 3 }, value: 2 });
+            assert.deepEqual(gridInst.cellContent(cell_2_3),{ position: { x: 2, y: 3 }, value: 2 });
         });
 
         it("Grid.cellContent - test case 13 - (3 , 0)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_13),null);
+            assert.deepEqual(gridInst.cellContent(cell_3_0),null);
         });
 
         it("Grid.cellContent - test case 14 - (3 , 1)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_14),null);
+            assert.deepEqual(gridInst.cellContent(cell_3_1),null);
         });
 
         it("Grid.cellContent - test case 15 - (3 , 2)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_15),null);
+            assert.deepEqual(gridInst.cellContent(cell_3_2),null);
         });
 
         it("Grid.cellContent - test case 16 - (3 , 3)", function (){
-            assert.deepEqual(gridInst.cellContent(cell_test_16),null);
+            assert.deepEqual(gridInst.cellContent(cell_3_3),null);
         });
     });
 
     describe('Tests for Grid.insertTile()', () => {
-        // const size = 4
-        // const cells = [[null,null,{"position":{"x":0,"y":2},"value":4},{"position":{"x":0,"y":3},"value":8}],[null,null,null,{"position":{"x":1,"y":3},"value":2}],[null,null,null,{"position":{"x":2,"y":3},"value":2}],[null,null,null,null]]
-        
-        // const gridInst = Object.create(Grid.prototype);
-        // gridInst.size = size;
-        // gridInst.cells = cells;
-
-        const position_1 = { "x": 0, "y": 0 };
-        const value_1 = 2;
-        const position_2 = { "x": 1, "y": 1 };
-        const value_2 = 4;
-        const position_3 = { "x": 2, "y": 2 };
-        const value_3 = 8;
-        const position_4 = { "x": 3, "y": 3 };
-        const value_4 = 16;
-
-        const tile_test_1 = new Tile(position_1, value_1);
-        const tile_test_2 = new Tile(position_2, value_2);
-        const tile_test_3 = new Tile(position_3, value_3);
-        const tile_test_4 = new Tile(position_4, value_4);
+        const emptyGrid = Object.create(Grid.prototype);
+        emptyGrid.size = size;
+        emptyGrid.cells = emptyCells;
 
         it("Grid.insertTile - test case 1 - (0,0) ", function () {
-            gridInst.insertTile(tile_test_1);
-            assert.equal(tile_test_1, gridInst.cells[position_1.x][position_1.y], "deeply equal");
+            emptyGrid.insertTile(tile_test_1);
+            assert.equal(tile_test_1, emptyGrid.cells[cell_0_0.x][cell_0_0.y], "deeply equal");
         });
-        it("Grid.insertTile - test case 2 - (1,1) ", function () {
-            gridInst.insertTile(tile_test_2);
-            assert.equal(tile_test_2, gridInst.cells[position_2.x][position_2.y], "deeply equal");
+
+        it("Grid.insertTile - test case 2 - (0,1) ", function () {
+            emptyGrid.insertTile(tile_test_2);
+            assert.equal(tile_test_2, emptyGrid.cells[cell_0_1.x][cell_0_1.y], "deeply equal");
         });
-        it("Grid.insertTile - test case 3 - (2,2) ", function () {
-            gridInst.insertTile(tile_test_3);
-            assert.equal(tile_test_3, gridInst.cells[position_3.x][position_3.y], "deeply equal");
+
+        it("Grid.insertTile - test case 3 - (0,1) ", function () {
+            emptyGrid.insertTile(tile_test_3);
+            assert.equal(tile_test_3, emptyGrid.cells[cell_0_1.x][cell_0_1.y], "deeply equal");
         });
-        it("Grid.insertTile - test case 4 - (3,3) ", function () {
-            gridInst.insertTile(tile_test_4);
-            assert.equal(tile_test_4, gridInst.cells[position_4.x][position_4.y], "deeply equal");
+
+        it("Grid.insertTile - test case 4 - (0,2) ", function () {
+            emptyGrid.insertTile(tile_test_4);
+            assert.equal(tile_test_4, emptyGrid.cells[cell_0_2.x][cell_0_2.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 5 - (0,3) ", function () {
+            emptyGrid.insertTile(tile_test_5);
+            assert.equal(tile_test_5, emptyGrid.cells[cell_0_3.x][cell_0_3.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 6 - (1,0) ", function () {
+            emptyGrid.insertTile(tile_test_6);
+            assert.equal(tile_test_6, emptyGrid.cells[cell_1_0.x][cell_1_0.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 7 - (1,1) ", function () {
+            emptyGrid.insertTile(tile_test_7);
+            assert.equal(tile_test_7, emptyGrid.cells[cell_1_1.x][cell_1_1.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 8 - (1,2) ", function () {
+            emptyGrid.insertTile(tile_test_8);
+            assert.equal(tile_test_8, emptyGrid.cells[cell_1_2.x][cell_1_2.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 9 - (1,3) ", function () {
+            emptyGrid.insertTile(tile_test_9);
+            assert.equal(tile_test_9, emptyGrid.cells[cell_1_3.x][cell_1_3.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 10 - (2,0) ", function () {
+            emptyGrid.insertTile(tile_test_10);
+            assert.equal(tile_test_10, emptyGrid.cells[cell_2_0.x][cell_2_0.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 11 - (2,1) ", function () {
+            emptyGrid.insertTile(tile_test_11);
+            assert.equal(tile_test_11, emptyGrid.cells[cell_2_1.x][cell_2_1.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 12 - (2,2) ", function () {
+            emptyGrid.insertTile(tile_test_12);
+            assert.equal(tile_test_12, emptyGrid.cells[cell_2_2.x][cell_2_2.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 13 - (2,3) ", function () {
+            emptyGrid.insertTile(tile_test_13);
+            assert.equal(tile_test_13, emptyGrid.cells[cell_2_3.x][cell_2_3.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 14 - (3,0) ", function () {
+            emptyGrid.insertTile(tile_test_14);
+            assert.equal(tile_test_14, emptyGrid.cells[cell_3_0.x][cell_3_0.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 15 - (3,1) ", function () {
+            emptyGrid.insertTile(tile_test_15);
+            assert.equal(tile_test_15, emptyGrid.cells[cell_3_1.x][cell_3_1.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 16 - (3,2) ", function () {
+            emptyGrid.insertTile(tile_test_16);
+            assert.equal(tile_test_16, emptyGrid.cells[cell_3_2.x][cell_3_2.y], "deeply equal");
+        });
+
+        it("Grid.insertTile - test case 17 - (3,3) ", function () {
+            emptyGrid.insertTile(tile_test_17);
+            assert.equal(tile_test_17, emptyGrid.cells[cell_3_3.x][cell_3_3.y], "deeply equal");
         });
 
     });
 
     describe('Tests for Grid.removeTile()', () => {
-        // const size = 4
-        // const cells = [[null, null, { "position": { "x": 0, "y": 2 }, "value": 4 }, { "position": { "x": 0, "y": 3 }, "value": 8 }], [null, null, null, { "position": { "x": 1, "y": 3 }, "value": 2 }], [null, null, null, { "position": { "x": 2, "y": 3 }, "value": 2 }], [null, null, null, null]]
+        const fullGrid = Object.create(Grid.prototype);
+        fullGrid.size = size;
+        fullGrid.cells = fullCells;
 
-        // const gridInst = Object.create(Grid.prototype);
-        // gridInst.size = size;
-        // gridInst.cells = cells;
-
-        const position_1 = { "x": 0, "y": 2 };
-        const value_1 = 0;
-        const position_2 = { "x": 0, "y": 3 };
-        const value_2 = 0;
-        const position_3 = { "x": 1, "y": 3 };
-        const value_3 = 0;
-        const position_4 = { "x": 2, "y": 3 };
-        const value_4 = 0;
-
-        const tile_test_1 = new Tile(position_1, value_1);
-        const tile_test_2 = new Tile(position_2, value_2);
-        const tile_test_3 = new Tile(position_3, value_3);
-        const tile_test_4 = new Tile(position_4, value_4);
-
-        it("Grid.removeTile - test case 1 - (0,2) ", function () {
-            gridInst.removeTile(tile_test_1);
-            assert.equal(gridInst.cells[position_1.x][position_1.y], null, "deeply equal");
+        it("Grid.removeTile - test case 1 - (0,0) ", function () {
+            fullGrid.removeTile(tile_test_1);
+            assert.equal(fullGrid.cells[cell_0_0.x][cell_0_0.y], null, "deeply equal");
         });
-        it("Grid.removeTile - test case 2 - (0,3) ", function () {
-            gridInst.removeTile(tile_test_2);
-            assert.equal(gridInst.cells[position_2.x][position_2.y], null, "deeply equal");
+
+        it("Grid.removeTile - test case 2 - (0,1) ", function () {
+            fullGrid.removeTile(tile_test_2);
+            assert.equal(fullGrid.cells[cell_0_1.x][cell_0_1.y], null, "deeply equal");
         });
-        it("Grid.removeTile - test case 3 - (1,3) ", function () {
-            gridInst.removeTile(tile_test_3);
-            assert.equal(gridInst.cells[position_3.x][position_3.y], null, "deeply equal");
+
+        it("Grid.removeTile - test case 3 - (0,1) ", function () {
+            fullGrid.removeTile(tile_test_3);
+            assert.equal(fullGrid.cells[cell_0_1.x][cell_0_1.y], null, "deeply equal");
         });
-        it("Grid.removeTile - test case 4 - (2,3) ", function () {
-            gridInst.removeTile(tile_test_4);
-            assert.equal(gridInst.cells[position_4.x][position_4.y], null, "deeply equal");
+
+        it("Grid.removeTile - test case 4 - (0,2) ", function () {
+            fullGrid.removeTile(tile_test_4);
+            assert.equal(fullGrid.cells[cell_0_2.x][cell_0_2.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 5 - (0,3) ", function () {
+            fullGrid.removeTile(tile_test_5);
+            assert.equal(fullGrid.cells[cell_0_3.x][cell_0_3.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 6 - (1,0) ", function () {
+            fullGrid.removeTile(tile_test_6);
+            assert.equal(fullGrid.cells[cell_1_0.x][cell_1_0.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 7 - (1,1) ", function () {
+            fullGrid.removeTile(tile_test_7);
+            assert.equal(fullGrid.cells[cell_1_1.x][cell_1_1.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 8 - (1,2) ", function () {
+            fullGrid.removeTile(tile_test_8);
+            assert.equal(fullGrid.cells[cell_1_2.x][cell_1_2.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 9 - (1,3) ", function () {
+            fullGrid.removeTile(tile_test_9);
+            assert.equal(fullGrid.cells[cell_1_3.x][cell_1_3.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 10 - (2,0) ", function () {
+            fullGrid.removeTile(tile_test_10);
+            assert.equal(fullGrid.cells[cell_2_0.x][cell_2_0.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 11 - (2,1) ", function () {
+            fullGrid.removeTile(tile_test_11);
+            assert.equal(fullGrid.cells[cell_2_1.x][cell_2_1.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 12 - (2,2) ", function () {
+            fullGrid.removeTile(tile_test_12);
+            assert.equal(fullGrid.cells[cell_2_2.x][cell_2_2.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 13 - (2,3) ", function () {
+            fullGrid.removeTile(tile_test_13);
+            assert.equal(fullGrid.cells[cell_2_3.x][cell_2_3.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 14 - (3,0) ", function () {
+            fullGrid.removeTile(tile_test_14);
+            assert.equal(fullGrid.cells[cell_3_0.x][cell_3_0.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 15 - (3,1) ", function () {
+            fullGrid.removeTile(tile_test_15);
+            assert.equal(fullGrid.cells[cell_3_1.x][cell_3_1.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 16 - (3,2) ", function () {
+            fullGrid.removeTile(tile_test_16);
+            assert.equal(fullGrid.cells[cell_3_2.x][cell_3_2.y], null, "deeply equal");
+        });
+
+        it("Grid.removeTile - test case 17 - (3,3) ", function () {
+            fullGrid.removeTile(tile_test_17);
+            assert.equal(fullGrid.cells[cell_3_3.x][cell_3_3.y], null, "deeply equal");
         });
 
     });
+    
 }
 
 module.exports = {
