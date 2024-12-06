@@ -43,19 +43,19 @@ function gameManagerTest () {
             //     2: Down
             //     3: Left
             
-        it("test case 1 - getVector - Up", function (){            
+        it("test case 1 - getVector - Up", () => {            
             assert.deepEqual(gameManagerInstance.getVector(0),{ x: 0,  y: -1 });
         });
 
-        it("test case 2 - getVector - Left", function (){            
+        it("test case 2 - getVector - Left", () => {            
             assert.deepEqual(gameManagerInstance.getVector(1),{ x: 1,  y: 0 });
         });
 
-        it("test case 3 - getVector - Down", function (){            
+        it("test case 3 - getVector - Down", () => {            
             assert.deepEqual(gameManagerInstance.getVector(2),{ x: 0,  y: 1 });
         });
 
-        it("test case 4 - getVector - Right", function (){            
+        it("test case 4 - getVector - Right", () => {            
             assert.deepEqual(gameManagerInstance.getVector(3),{ x: -1,  y: 0 });
         });
         
@@ -122,121 +122,121 @@ function gameManagerTest () {
         const moveTile_tile_20 = new Tile({x: 1, y: 1}, 4);
         moveTile_tile_20.previousPosition = {"x": 1, "y": 1};
         
-        it("moveTile - test case 1", function (){          
+        it("moveTile - test case 1 - tile position (1,2) value 2, cell position (1,2)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_1, cell_1_2);
             const updatedMoveTile_cell_1 = gridInst.cells[cell_1_2.x][cell_1_2.y];
             assert.deepEqual(updatedMoveTile_cell_1, moveTile_tile_1);
         });
 
-        it("moveTile - test case 2", function (){          
+        it("moveTile - test case 2 - tile position (2,1) value 8, cell position (2,1)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_2, cell_2_1);
             const updatedMoveTile_cell_2 = gridInst.cells[cell_2_1.x][cell_2_1.y];
             assert.deepEqual(updatedMoveTile_cell_2, moveTile_tile_2);
         });
 
-        it("moveTile - test case 3", function (){          
+        it("moveTile - test case 3 - tile position (0,0) value 16, cell position (1,0)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_3, cell_1_0);
             const updatedMoveTile_cell_3 = gridInst.cells[cell_1_0.x][cell_1_0.y];
             assert.deepEqual(updatedMoveTile_cell_3, moveTile_tile_3);
         });
 
-        it("moveTile - test case 4", function (){          
+        it("moveTile - test case 4 - tile position (3,1) value 4, cell position (0,1)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_4, cell_0_1);
             const updatedMoveTile_cell_4 = gridInst.cells[cell_0_1.x][cell_0_1.y];
             assert.deepEqual(updatedMoveTile_cell_4, moveTile_tile_4);
         });
 
-        it("moveTile - test case 5", function (){          
+        it("moveTile - test case 5 - tile position (2,3) value 4, cell position (3,3)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_5, cell_3_3);
             const updatedMoveTile_cell_5 = gridInst.cells[cell_3_3.x][cell_3_3.y];
             assert.deepEqual(updatedMoveTile_cell_5, moveTile_tile_5);
         });
 
-        it("moveTile - test case 6", function (){          
+        it("moveTile - test case 6 - tile position (2,2) value 16, cell position (0,2)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_6, cell_0_2);
             const updatedMoveTile_cell_6 = gridInst.cells[cell_0_2.x][cell_0_2.y];
             assert.deepEqual(updatedMoveTile_cell_6, moveTile_tile_6);
         });
 
-        it("moveTile - test case 7", function (){          
+        it("moveTile - test case 7 - tile position (0,2) value 8, cell position (3,2)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_7, cell_3_2);
             const updatedMoveTile_cell_7 = gridInst.cells[cell_3_2.x][cell_3_2.y];
             assert.deepEqual(updatedMoveTile_cell_7, moveTile_tile_7);
         });
         
-        it("moveTile - test case 8", function (){          
+        it("moveTile - test case 8 - tile position (3,2) value 4, cell position (2,2)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_8, cell_2_2);
             const updatedMoveTile_cell_8 = gridInst.cells[cell_2_2.x][cell_2_2.y];
             assert.deepEqual(updatedMoveTile_cell_8, moveTile_tile_8);
         });
 
-        it("moveTile - test case 9", function (){          
+        it("moveTile - test case 9 - tile position (0,3) value 4, cell position (2,3)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_9, cell_2_3);
             const updatedMoveTile_cell_9 = gridInst.cells[cell_2_3.x][cell_2_3.y];
             assert.deepEqual(updatedMoveTile_cell_9, moveTile_tile_9);
         });
 
-        it("moveTile - test case 10", function (){          
+        it("moveTile - test case 10 - tile position (0,1) value 2, cell position (1,1)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_10, cell_1_1);
             const updatedMoveTile_cell_10 = gridInst.cells[cell_1_1.x][cell_1_1.y];
             assert.deepEqual(updatedMoveTile_cell_10, moveTile_tile_10);
         });
 
-        it("moveTile - test case 11", function (){          
+        it("moveTile - test case 11 - tile position (1,1) value 16, cell position (3,1)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_11, cell_3_1);
             const updatedMoveTile_cell_11 = gridInst.cells[cell_3_1.x][cell_3_1.y];
             assert.deepEqual(updatedMoveTile_cell_11, moveTile_tile_11);
         });
 
-        it("moveTile - test case 12", function (){          
+        it("moveTile - test case 12 - tile position (3,3) value 8, cell position (1,3)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_12, cell_1_3);
             const updatedMoveTile_cell_12 = gridInst.cells[cell_1_3.x][cell_1_3.y];
             assert.deepEqual(updatedMoveTile_cell_12, moveTile_tile_12);
         });
 
-        it("moveTile - test case 13", function (){          
+        it("moveTile - test case 13 - tile position (1,0) value 2, cell position (2,0)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_13, cell_2_0);
             const updatedMoveTile_cell_13 = gridInst.cells[cell_2_0.x][cell_2_0.y];
             assert.deepEqual(updatedMoveTile_cell_13, moveTile_tile_13);
         });
 
-        it("moveTile - test case 14", function (){          
+        it("moveTile - test case 14 - tile position (1,3) value 16, cell position (0,3)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_14, cell_0_3);
             const updatedMoveTile_cell_14 = gridInst.cells[cell_0_3.x][cell_0_3.y];
             assert.deepEqual(updatedMoveTile_cell_14, moveTile_tile_14);
         });
 
-        it("moveTile - test case 15", function (){          
+        it("moveTile - test case 15 - tile position (3,0) value 16, cell position (0,0)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_15, cell_0_0);
             const updatedMoveTile_cell_15 = gridInst.cells[cell_0_0.x][cell_0_0.y];
             assert.deepEqual(updatedMoveTile_cell_15, moveTile_tile_15);
         });
 
-        it("moveTile - test case 16", function (){          
+        it("moveTile - test case 16 - tile position (2,0) value 4, cell position (1,0)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_16, cell_1_0);
             const updatedMoveTile_cell_16 = gridInst.cells[cell_1_0.x][cell_1_0.y];
             assert.deepEqual(updatedMoveTile_cell_16, moveTile_tile_16);
         });
 
-        it("moveTile - test case 17", function (){          
+        it("moveTile - test case 17 - tile position (0,3) value 16, cell position (1,0)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_17, cell_2_3);
             const updatedMoveTile_cell_17 = gridInst.cells[cell_2_3.x][cell_2_3.y];
             assert.deepEqual(updatedMoveTile_cell_17, moveTile_tile_17);
         });
 
-        it("moveTile - test case 18", function (){          
+        it("moveTile - test case 18 - tile position (1,0) value 8, cell position (0,0)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_18, cell_0_0);
             const updatedMoveTile_cell_18 = gridInst.cells[cell_0_0.x][cell_0_0.y];
             assert.deepEqual(updatedMoveTile_cell_18, moveTile_tile_18);
         });
 
-        it("moveTile - test case 19", function (){          
+        it("moveTile - test case 19 - tile position (2,3) value 2, cell position (0,3)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_19, cell_0_3);
             const updatedMoveTile_cell_19 = gridInst.cells[cell_0_3.x][cell_0_3.y];
             assert.deepEqual(updatedMoveTile_cell_19, moveTile_tile_19);
         });
 
-        it("moveTile - test case 20", function (){          
+        it("moveTile - test case 20 - tile position (1,1) value 4, cell position (3,1)", () => {          
             gameManagerInstance.moveTile(moveTile_tile_20, cell_3_1);
             const updatedMoveTile_cell_20 = gridInst.cells[cell_3_1.x][cell_3_1.y];
             assert.deepEqual(updatedMoveTile_cell_20, moveTile_tile_20);
@@ -249,121 +249,121 @@ function gameManagerTest () {
     const vectorLeft = { x: -1,  y: 0 };
 
     describe('Tests for GameManager.buildTraversals()', () => {       
-        it("test case 1 - buildTraversals - Right", function (){            
+        it("test case 1 - buildTraversals - Right",  () => {            
             assert.deepEqual(gameManagerInstance.buildTraversals(vectorRight),{x: [ 3, 2, 1, 0 ], y: [0, 1, 2, 3]});
         });
 
-        it("test case 2 - buildTraversals - Down", function (){            
+        it("test case 2 - buildTraversals - Down",  () => {            
             assert.deepEqual(gameManagerInstance.buildTraversals(vectorDown),{x: [0, 1, 2, 3], y: [ 3, 2, 1, 0 ]});
         });
 
-        it("test case 3 - buildTraversals - Left", function (){   
+        it("test case 3 - buildTraversals - Left",  () => {   
             assert.deepEqual(gameManagerInstance.buildTraversals(vectorLeft),{x: [0, 1, 2, 3], y: [0, 1, 2, 3]});
         });
 
-        it("test case 4 - buildTraversals - Up", function (){        
+        it("test case 4 - buildTraversals - Up",  () => {        
             assert.deepEqual(gameManagerInstance.buildTraversals(vectorUp),{x: [0, 1, 2, 3], y: [0, 1, 2, 3]});
         });
     });
 
     describe('Tests for GameManager.findFarthestPosition(cell, vector)', () => {
-        it("test case 1 - find farthest position - (0, 1), up", function (){
+        it("test case 1 - find farthest position - (0, 1), up",  () => {
             const farthest_1 = gameManagerInstance.findFarthestPosition(cell_0_1, vectorUp);
             const far_out_1 = { farthest: { x: 0, y: 1 }, next: { x: 0, y: 0 } };
             assert.deepEqual(farthest_1, far_out_1);
         });
 
-        it("test case 2 - find farthest position - (1, 2), up", function (){
+        it("test case 2 - find farthest position - (1, 2), up",  () => {
             const farthest_2 = gameManagerInstance.findFarthestPosition(cell_1_2, vectorUp);
             const far_out_2 = { farthest: { x: 1, y: 0 }, next: { x: 1, y: -1 } };
             assert.deepEqual(farthest_2, far_out_2);
         });
 
-        it("test case 3 - find farthest position - (2, 3), up", function (){
+        it("test case 3 - find farthest position - (2, 3), up",  () => {
             const farthest_3 = gameManagerInstance.findFarthestPosition(cell_2_3, vectorUp);
             const far_out_3 = { farthest: { x: 2, y: 3 }, next: { x: 2, y: 2 } };
             assert.deepEqual(farthest_3, far_out_3);
         });
 
-        it("test case 4 - find farthest position - (3, 0), up", function (){
+        it("test case 4 - find farthest position - (3, 0), up", () => {
             const farthest_4 = gameManagerInstance.findFarthestPosition(cell_3_0, vectorUp);
             const far_out_4 = { farthest: { x: 3, y: 0 }, next: { x: 3, y: -1 } };
             assert.deepEqual(farthest_4, far_out_4);
         });
 
-        it("test case 5 - find farthest position - (0, 0), right", function (){
+        it("test case 5 - find farthest position - (0, 0), right", () => {
             const farthest_5 = gameManagerInstance.findFarthestPosition(cell_0_0, vectorRight);
             const far_out_5 = { farthest: { x: 3, y: 0 }, next: { x: 4, y: 0 } };
             assert.deepEqual(farthest_5, far_out_5);
         });
 
-        it("test case 6 - find farthest position - (1, 2), right", function (){
+        it("test case 6 - find farthest position - (1, 2), right", () => {
             const farthest_6 = gameManagerInstance.findFarthestPosition(cell_1_2, vectorRight);
             const far_out_6 = { farthest: { x: 1, y: 2 }, next: { x: 2, y: 2 } };
             assert.deepEqual(farthest_6, far_out_6);
         });
 
-        it("test case 7 - find farthest position - (1, 1), right", function (){
+        it("test case 7 - find farthest position - (1, 1), right", () => {
             const farthest_7 = gameManagerInstance.findFarthestPosition(cell_1_1, vectorRight);
             const far_out_7 = { farthest: { x: 1, y: 1 }, next: { x: 2, y: 1 } };
             assert.deepEqual(farthest_7, far_out_7);
         });
 
-        it("test case 8 - find farthest position - (2, 2), right", function (){
+        it("test case 8 - find farthest position - (2, 2), right", () => {
             const farthest_8 = gameManagerInstance.findFarthestPosition(cell_2_2, vectorRight);
             const far_out_8 = { farthest: { x: 3, y: 2 }, next: { x: 4, y: 2 } };
             assert.deepEqual(farthest_8, far_out_8);
         });
 
-        it("test case 9 - find farthest position - (3, 3), right", function (){
+        it("test case 9 - find farthest position - (3, 3), right", () => {
             const farthest_9 = gameManagerInstance.findFarthestPosition(cell_3_3, vectorRight);
             const far_out_9 = { farthest: { x: 3, y: 3 }, next: { x: 4, y: 3 } };
             assert.deepEqual(farthest_9, far_out_9);
         });
 
-        it("test case 10 - find farthest position - (0, 3), down", function (){
+        it("test case 10 - find farthest position - (0, 3), down", () => {
             const farthest_10 = gameManagerInstance.findFarthestPosition(cell_0_3, vectorDown);
             const far_out_10 = { farthest: { x: 0, y: 3 }, next: { x: 0, y: 4 } };
             assert.deepEqual(farthest_10, far_out_10);
         });
 
-        it("test case 11 - find farthest position - (1, 0), down", function (){
+        it("test case 11 - find farthest position - (1, 0), down", () => {
             const farthest_11 = gameManagerInstance.findFarthestPosition(cell_1_0, vectorDown);
             const far_out_11 = { farthest: { x: 1, y: 1 }, next: { x: 1, y: 2 } };
             assert.deepEqual(farthest_11, far_out_11);
         });
 
-        it("test case 12 - find farthest position - (2, 1), down", function (){
+        it("test case 12 - find farthest position - (2, 1), down", () => {
             const farthest_12 = gameManagerInstance.findFarthestPosition(cell_2_1, vectorDown);
             const far_out_12 = { farthest: { x: 2, y: 1 }, next: { x: 2, y: 2 } };
             assert.deepEqual(farthest_12, far_out_12);
         });
 
-        it("test case 13 - find farthest position - (3, 2), down", function (){
+        it("test case 13 - find farthest position - (3, 2), down", () => {
             const farthest_13 = gameManagerInstance.findFarthestPosition(cell_3_2, vectorDown);
             const far_out_13 = { farthest: { x: 3, y: 3 }, next: { x: 3, y: 4 } };
             assert.deepEqual(farthest_13, far_out_13);
         });
 
-        it("test case 14 - find farthest position - (0, 2), left", function (){
+        it("test case 14 - find farthest position - (0, 2), left", () => {
             const farthest_14 = gameManagerInstance.findFarthestPosition(cell_0_2, vectorLeft);
             const far_out_14 = { farthest: { x: 0, y: 2 }, next: { x: -1, y: 2 } };
             assert.deepEqual(farthest_14, far_out_14);
         });
 
-        it("test case 15 - find farthest position - (1, 3), left", function (){
+        it("test case 15 - find farthest position - (1, 3), left", () => {
             const farthest_15 = gameManagerInstance.findFarthestPosition(cell_1_3, vectorLeft);
             const far_out_15 = { farthest: { x: 1, y: 3 }, next: { x: 0, y: 3 } };
             assert.deepEqual(farthest_15, far_out_15);
         });
 
-        it("test case 16 - find farthest position - (2, 0), left", function (){
+        it("test case 16 - find farthest position - (2, 0), left", () => {
             const farthest_16 = gameManagerInstance.findFarthestPosition(cell_2_0, vectorLeft);
             const far_out_16 = { farthest: { x: 1, y: 0 }, next: { x: 0, y: 0 } };
             assert.deepEqual(farthest_16, far_out_16);
         });
 
-        it("test case 17 - find farthest position - (3, 1), left", function (){
+        it("test case 17 - find farthest position - (3, 1), left", () => {
             const farthest_17 = gameManagerInstance.findFarthestPosition(cell_3_1, vectorLeft);
             const far_out_17 = { farthest: { x: 3, y: 1 }, next: { x: 2, y: 1 } };
             assert.deepEqual(farthest_17, far_out_17);

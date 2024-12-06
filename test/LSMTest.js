@@ -19,7 +19,7 @@ function localStorageManagerTest () {
       return delete this._data[id];
     },
 
-    clear: function () {
+    clear: () => {
       return this._data = {};
     }
   };
@@ -38,23 +38,23 @@ function localStorageManagerTest () {
       testLSM.gameStateKey = "gameState";
       testLSM.storage = fakeStorage;
 
-      it("Tile.updatePosition - test case 1 - 4 ", function () {
+      it("Tile.updatePosition - test case 1 - 4 ", () => {
           testLSM.setBestScore(test_score_1);
           assert.equal(test_score_1, testLSM.getBestScore());
       });
-      it("Tile.updatePosition - test case 2 - 16 ", function () {
+      it("Tile.updatePosition - test case 2 - 16 ", () => {
           testLSM.setBestScore(test_score_2);
           assert.equal(test_score_2, testLSM.getBestScore());
       });
-      it("Tile.updatePosition - test case 3 - 160 ", function () {
+      it("Tile.updatePosition - test case 3 - 160 ", () => {
           testLSM.setBestScore(test_score_3);
           assert.equal(test_score_3, testLSM.getBestScore());
       });
-      it("Tile.updatePosition - test case 4 - 2048 ", function () {
+      it("Tile.updatePosition - test case 4 - 2048 ", () => {
           testLSM.setBestScore(test_score_4);
           assert.equal(test_score_4, testLSM.getBestScore());
       });
-      it("Tile.updatePosition - test case 5 - -1 ", function () {
+      it("Tile.updatePosition - test case 5 - (-1) ", () => {
           testLSM.setBestScore(test_score_5);
           assert.equal(test_score_5, testLSM.getBestScore());
       });

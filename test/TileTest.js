@@ -30,97 +30,97 @@ function tileTest () {
         const position_test_15 = { "x": 3, "y": 2 };
         const position_test_16 = { "x": 3, "y": 3 };
 
-        it("Tile.updatePosition - test case 1 - (0,0) ", function () {
+        it("Tile.updatePosition - test case 1 - (0,0) ", () => {
             altTestTile.updatePosition(position_test_1);
             updatedPosition = { "x": altTestTile.x, "y": altTestTile.y };
             assert.deepEqual(position_test_1, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 2 - (0,1) ", function () {
+        it("Tile.updatePosition - test case 2 - (0,1) ", () => {
             testTile.updatePosition(position_test_2);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_2, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 3 - (0,2) ", function () {
+        it("Tile.updatePosition - test case 3 - (0,2) ", () => {
             testTile.updatePosition(position_test_3);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_3, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 4 - (0,3) ", function () {
+        it("Tile.updatePosition - test case 4 - (0,3) ", () => {
             testTile.updatePosition(position_test_4);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_4, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 5 - (1,0) ", function () {
+        it("Tile.updatePosition - test case 5 - (1,0) ", () => {
             testTile.updatePosition(position_test_5);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_5, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 6 - (1,1) ", function () {
+        it("Tile.updatePosition - test case 6 - (1,1) ", () => {
             testTile.updatePosition(position_test_6);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_6, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 7 - (1,2) ", function () {
+        it("Tile.updatePosition - test case 7 - (1,2) ", () => {
             testTile.updatePosition(position_test_7);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_7, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 8 - (1,3) ", function () {
+        it("Tile.updatePosition - test case 8 - (1,3) ", () => {
             testTile.updatePosition(position_test_8);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_8, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 9 - (2,0) ", function () {
+        it("Tile.updatePosition - test case 9 - (2,0) ", () => {
             testTile.updatePosition(position_test_9);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_9, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 10 - (2,1) ", function () {
+        it("Tile.updatePosition - test case 10 - (2,1) ", () => {
             testTile.updatePosition(position_test_10);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_10, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 11 - (2,2) ", function () {
+        it("Tile.updatePosition - test case 11 - (2,2) ", () => {
             testTile.updatePosition(position_test_11);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_11, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 12 - (2,3) ", function () {
+        it("Tile.updatePosition - test case 12 - (2,3) ", () => {
             testTile.updatePosition(position_test_12);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_12, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 13 - (3,0) ", function () {
+        it("Tile.updatePosition - test case 13 - (3,0) ", () => {
             testTile.updatePosition(position_test_13);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_13, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 14 - (3,1) ", function () {
+        it("Tile.updatePosition - test case 14 - (3,1) ", () => {
             testTile.updatePosition(position_test_14);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_14, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 15 - (3,2) ", function () {
+        it("Tile.updatePosition - test case 15 - (3,2) ", () => {
             testTile.updatePosition(position_test_15);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_15, updatedPosition);
         });
 
-        it("Tile.updatePosition - test case 16 - (3,3) ", function () {
+        it("Tile.updatePosition - test case 16 - (3,3) ", () => {
             testTile.updatePosition(position_test_16);
             updatedPosition = { "x": testTile.x, "y": testTile.y };
             assert.deepEqual(position_test_16, updatedPosition);

@@ -6,10 +6,10 @@ const HTMLActuatorTest = require("./HTMLActuatorTest.js");
 const localStorageTest = require("./LSMTest.js");
 
 describe("Run tests", function(){
-    // gameManagerTests.gameManagerTest();
-    // gridTests.gridTest();
-    // moveTest.moveTest();
-    // tileTest.tileTest();
+    gameManagerTests.gameManagerTest();
+    gridTests.gridTest();
+    moveTest.moveTest();
+    tileTest.tileTest();
     HTMLActuatorTest.HTMLActuatorTest();
-    // localStorageTest.localStorageManagerTest();
+    localStorageTest.localStorageManagerTest();
 });
